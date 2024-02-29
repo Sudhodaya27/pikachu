@@ -1,38 +1,129 @@
-.App {
-  text-align: center;
+@charset "utf-8";
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh; 
+	background: radial-gradient(yellow, #ECA05D);
+	flex-wrap: wrap;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.card{
+	position: relative;
+	width: 600px;
+	height: 350px;
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	transition: 1s;
+  float: left;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.card .circle{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+
+.card .circle::before{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #E68843;
+	clip-path: circle(150px at center);
+	border-radius: 20px;
+	transition: 0.5s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card:hover .circle::before{
+	clip-path: circle(400px at center);
+	background:#F1E8DB;
+}
+
+.card img{
+	position: absolute;
+	top: -40%;
+	left: 50%;
+	transform: translate(-50%, 50%);
+	height: 300px;
+  transition: 0.5s;
+}
+
+.card:hover img{
+	left: 95%;
+	height: 450px;
+}
+
+.card .content{
+	position: relative;
+	width: 70%;
+	padding: 20px 20px 20px 40px;
+	transition: 0.5s;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.card:hover .content{
+	left: 0;
+	opacity: 100%;
+	visibility: visible;
+}
+
+.card .content h2{
+	color: black;
+	font-size: 3em;
+	line-height: 2em;
+	margin-bottom: 5px;
+}
+
+.card .content p{
+	color: black;
+	font-size: 1.5em;
+}
+
+.card .content{
+	position: relative;
+	color: black;
+	padding: 10px 10px 10px 20px;
+	border-radius: 10px;
+	font-weight: 600;
+}
+
+
+
+@media screen and (max-device-width: 320px){
+	.card{
+    margin: 0 auto;
+		width: auto;
+		max-width: 350px;
+		margin: 13px;
+	}
+	.card:hover{
+		height: 600px;
+	}
+	.card .content{
+		width: 100%;
+		left: 0;
+		padding: 30px;
+	}
+	.card:hover img{
+		top: 50%;
+		left: 50%;
+		height: 300px;
+	}
 }
